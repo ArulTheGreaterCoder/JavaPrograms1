@@ -1,46 +1,4 @@
 import java.util.*;
-
-class Student{
-    private String name;
-    private int id;
-    private ArrayList courses;
-    public Student(String name, int id){
-        this.name = name;
-        this.id = id;
-        this.courses = new ArrayList<>();
-    }
-    public void addCourse(Course course){
-        courses.add(course);
-    }
-    public void removeCourse(Course course){
-        courses.remove(course);
-    }
-    public ArrayList getCourses(){
-        return courses;
-    }
-    public double getGPA(){
-        if (courses.isEmpty()) return 0.0; 
-        double total = 0;
-        int count = 0;
-        for(Course course: courses){
-            total+=course.getGrade();
-        }return total/count;
-    }
-    public String getTranscript(){
-        StringBuilder transacript = new StringBuilder();
-        transcript.append("Name: ").append(name).append("\n");
-        transcript.append("ID: ").append(id).append("\n");
-    for (Course course : courses){
-        transcript.append("Course: ")
-        .append(course.getName())
-        .append("(").append(course.getCredits()).append(" credits)\n")
-        .append("Grade")
-        .append(course.getGrade())
-        .append("(").append(course.getLetterGrade()).append(")\n\n");
-    }
-    return transcript.tostring();
-}
-}
 class Course{
     private String name;
     private int credits;
@@ -70,13 +28,54 @@ class Course{
         else return "C";
     }
 }
+class Student{
+    private String name;
+    private int id;
+    private ArrayList<Course> courses;
+    public Student(String name, int id){
+        this.name = name;
+        this.id = id;
+        this.courses = new ArrayList<>();
+    }
+    public void addCourse(Course course){
+        courses.add(course);
+    }
+    public void removeCourse(Course course){
+        courses.remove(course);
+    }
+    public ArrayList<Course> getCourses(){
+        return courses;
+    }
+    public double getGPA(){
+        if (courses.isEmpty()) return 0.0; 
+        double total = 0;
+        int count = 0;
+        for(Course course: courses){
+            total+=course.getGrade();
+        }return total/count;
+    }
+    public String getTranscript(){
+        StringBuilder transcript = new StringBuilder();
+        transcript.append("Name: ").append(name).append("\n");
+        transcript.append("ID: ").append(id).append("\n");
+    for (Course course : courses){
+        transcript.append("Course: ")
+        .append(course.getName())
+        .append("(").append(course.getCredits()).append(" credits)\n")
+        .append("Grade")
+        .append(course.getGrade())
+        .append("(").append(course.getLetterGrade()).append(")\n\n");
+    }
+    return transcript.toString();
+}
+}
 public class main5{
     public static void main(String[] args){
         Course course1 = new Course("Computer SCience",4);
         course1.setGrade(3.7);
         Student student1 = new Student("Alice",1234);
         student1.addCourse(course1);
-        System.out.println("Alice's Initial Grade: "+student1.getGrade());
+        System.out.println("Alice's Initial Grade: "+course1.getGrade());
         Course math = new Course("Math", 3);
         student1.addCourse(math);
         math.setGrade(4.0);
