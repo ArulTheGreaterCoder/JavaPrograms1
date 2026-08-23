@@ -12,7 +12,7 @@ class RemoverPrime{
         if (n<=1){
             return false;
         }
-        for(int c = 2; c<=n; c++){
+        for(int c = 2; c<n; c++){
             if(n%c==0){
                 return false;
             }
